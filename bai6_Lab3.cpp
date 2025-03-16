@@ -13,13 +13,16 @@ void xuatMang(int* a, int n) {
 		cout << *(a + i) << " ";
 	}
 }
-
-int* daoMang(int* a,int n) {
-	int* p = new int[n];
+void daoMang(int* a, int n) {
+	/*int* p = new int[n];
 	for (int i = n-1,j = 0; i >=0; i--,j++) {
 		*(p + j) = *(a + i);
+	}*/
+	for (int i = 0, j = n - 1; i < j; i++, j--) {
+		int tam = a[i];
+		a[i] = a[j];
+		a[j] = tam;
 	}
-	return p;
 }
 int main() {
 	int n;
@@ -28,12 +31,12 @@ int main() {
 	int* a = new int[n];
 	nhapMang(a, n);
 	
-	int* dao = daoMang(a, n);
+	daoMang(a, n);
 
-	xuatMang(dao, n);
+	xuatMang(a, n);
 
 	delete[]a;
-	delete[]dao;
+	/*delete[]dao;*/
 
 	return 0;
 }
