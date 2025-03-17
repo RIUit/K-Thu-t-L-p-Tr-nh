@@ -1,23 +1,19 @@
 #include<iostream>
 #include <string>
 #include<cctype>
+#include<cstring>
 using namespace std;
 
-
-int main() {
-	char s[51];
-	cin.get(s, 51);
-
-	char* b = s;
-	int demkytu = 0, demkhoangtrang = 0;
+int main(){
+	char s[50];
+	cin.getline(s,50);
 	
-	while (*b) {
-		if (isalnum(*b)) demkytu++;
-		if (isspace(*b)) demkhoangtrang++;
-		b++;
-	}
-	cout <<"Dem ky tu cua ky tu va so : " << demkytu << endl;
-	cout <<"Dem khoang trang : " << demkhoangtrang << endl;
+	char s2[] = " ";
+	char* ptok = strtok(s, s2);
+	while (ptok != NULL)
+	{
+		cout << ptok << endl;
+		ptok = strtok(NULL,s2);
 
-	return 0;
+	}
 }
