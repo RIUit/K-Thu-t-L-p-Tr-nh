@@ -6,7 +6,7 @@ using namespace std;
 
 int main(){
 	char s[50];
-	cin >> s;
+	cin.getline(s,50);
 	
 	char s2[] = " ";
 	char* ptok = strtok(s, s2);
