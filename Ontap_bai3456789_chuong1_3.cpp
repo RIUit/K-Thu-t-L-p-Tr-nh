@@ -39,15 +39,15 @@ void daoMang(int*a,int l,int r){
 //	toHex(n/16);
 //	cout << arr[n%16];
 //}
-void toHex(int n){
+void toHex(int n,string &hex){
 	char banghe16 []="0123456789ABCDEF";
 	if(n<16){
-		cout<<banghe16[n];
+		hex+=banghe16[n];
 		return;
 	}
-	
-	cout<<banghe16[n%16];
-	toHex(n/16);
+	toHex(n/16,hex);
+	hex+=banghe16[n%16];
+
 } 
 int main(){
 	int n;
@@ -74,16 +74,18 @@ int main(){
 	cout<<endl;
 	
 	int tp;
-	char hex[100];
 	int vt =0;
+	
 	cout<<"Nhap so thap phan : ";
 	cin>>tp;
 	
 	if(tp == 0)
         cout << "0";
-    else
-        toHex(tp);
-        
+    else{
+    	string hex="";
+    	toHex(tp,hex);
+        cout<<hex<<endl;
+	}
 
 	delete []a;
 	return 0;
