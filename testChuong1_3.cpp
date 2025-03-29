@@ -3,31 +3,36 @@
 using namespace std;
 
 
-	
+//ham nhap mang de quy	
 void nhap(int*a,int n){
-	if(n==0) return;
+	if(n==0) return;// ham void moi dung dc return;nghia cua cau lenh la if n == 0 thi dung lai
 	cout<<"Nhap phan tu ";
 	cin>>*a;
 	nhap(a+1,n-1);
 }
+//ham xuat mang de quy
 void xuat(int*a,int n){
-	if(n==0) return;
+	if(n==0) return; // khi lan dau khai bao int * p de bt day la con tro va ke ve sau dung *p mang y nghia lay gia tri(int) do khai bao int*p
 	cout<<*a<<" ";
-	xuat(a+1,n-1);
+	xuat(a+1,n-1);	// khi lan dau khai bao int*p thi p la mang nghia dia chi khai bao p no tro den phan tu &a (a la gia tri int thi & bien a thanh dia chi de <=> dia chi p = dia chi a  
 }
+//Ham tim gia tri va vi tri max cua mang de quy
 int*maxMang(int*p,int n){
 	if(n==1) return p;
-	return (*p > *maxMang(p+1,n-1))? p : maxMang(p+1,n-1);
+	return (*p > *maxMang(p+1,n-1))? p : maxMang(p+1,n-1);//*p>*max..gia tri p > gia tri max.. true:p tro den pt max la *p
 }
+//Ham tim gia tri va vi tri min cua mang de quy
 int*minMang(int*p,int n){
 	if(n==1) return p;
 	return (*p < *minMang(p+1,n-1))? p : minMang(p+1,n-1);
 }
+//Ham dao nguoc mang de quy
 void daoNguoc(int*p,int l,int r){
 	if(l>=r) return;
 	swap(p[l],p[r]);
 	return  daoNguoc(p,l+1,r-1);
 }
+//Ham chuyen doi so thap phan sang so thap luc phan de quy
 void toHex(int n,string &hex){
 	char bang[] ="0123456789ABCDEF";
 	if(n<16){
@@ -37,6 +42,7 @@ void toHex(int n,string &hex){
 	toHex(n/16,hex);
 	hex+=bang[n%16]; 
 }
+//Ham chuyen doi he so luc phan sang he thap phan de quy
 int hexToDec(string hex,int dodai=0){  // 3E3
 	if(dodai == hex.length()) return 0;
 	char kt=hex[dodai];
