@@ -1,4 +1,5 @@
 #include<iostream>
+#include<iomanip>
 #include<ctime>
 using namespace std;
 
@@ -12,7 +13,7 @@ int tich_digit_Old(int n,int tich = 1){
 	if(n % 10 % 2!= 0)
 		tich *= n % 10;
 
-	return tich*tich_digit_Old(n / 10);;
+	return tich_digit_Old(n / 10,tich);
 }
 int tongHangLe(int a[MAX][MAX],int r,int c){
 	int tong=0;
@@ -79,6 +80,20 @@ int* timDiaChiMin(int* a, int n, int* minPtr) {
     }
     return timDiaChiMin(a + 1, n - 1, minPtr); 
 }
+void sapXepGiamDan(int*a,int n){
+	for(int i=0;i<n;i++){
+		int*max=a+i;
+		for(int j=i+1;j<n;j++){
+			if(*(a+j)>*max){
+				max=a+j;
+			}
+		}
+		if(max!=(a+i)){
+			swap(*max,*(a+i));
+		}	
+	}
+	
+}
 int main(){
 //	int a[MAX][MAX];
 //	srand(time(0));
@@ -139,7 +154,10 @@ int main(){
 	} 
     cout << "Dia chi phan tu nho nhat dau tien: " << minPtr << endl;
     cout << "Gia tri min: " << *minPtr << endl;
-
+	sapXepGiamDan(arr,n);
+	for(int i=0;i<n;i++){
+		cout<<arr[i]<<" ";
+	}
 	delete []arr;
 //	delete []stdID;
 //	stdID=nullptr;
