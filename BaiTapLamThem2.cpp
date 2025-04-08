@@ -99,6 +99,19 @@ int demSoHT(int a[MAX][MAX],int r,int c){
 	}
 	return dem;
 }
+pair<int,int>timMaxMin(int a[MAX][MAX],int r,int c){
+	int max=INT_MIN;
+	int min=INT_MAX;
+	for(int i=0;i<r;i++){
+		for(int j=0;j<c;j++){
+			if(a[i][j]>max){
+				max=a[i][j];
+			}else if(a[i][j]<min)
+				min=a[i][j];
+		}
+	}
+	return{max,min};
+}
 int main(){
 	int n;
 	srand(time(0));
